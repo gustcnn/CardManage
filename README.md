@@ -1,1 +1,3 @@
 # CardManage
+.pyc
+.py
