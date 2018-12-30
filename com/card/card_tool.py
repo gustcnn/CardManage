@@ -7,6 +7,7 @@ import json
 
 class Card:
     card_list = []  # 名片列表用来记录所有名片的
+
     def create_card(self):
         """新增名片"""
         print("-" * 50)
@@ -21,7 +22,7 @@ class Card:
         card_dict["phone"] = phone_str
         card_dict["email"] = email_str
         self.card_list.append(card_dict)
-        print("添加%s的名片成功！"%name_str)
+        print("添加%s的名片成功！" % name_str)
 
     """将card_list写入本地文件"""
 
@@ -31,28 +32,28 @@ class Card:
 
     def read_file(self):
         list_read = []
-        #必须是.json文件
+        # 必须是.json文件
         with open("card.json", "r", encoding="utf8") as f:
-            line_read=json.loads(f.readline())
-        #print(type(line_read))
-        #print(line_read)
+            line_read = json.loads(f.readline())
+        # print(type(line_read))
+        # print(line_read)
         return line_read
 
     def show_all_cards(self):
         """显示所有名片"""
         print("-" * 50)
         print("显示所有名片")
-        card_json_read=self.read_file()
+        card_json_read = self.read_file()
         if len(card_json_read) == 0:
             print("没有数据")
         else:
-            #print(card_json_read)
+            # print(card_json_read)
             for name in ["姓名", "电话", "QQ", "邮箱"]:
                 print(name, end="\t" * 4)
             print()
             for card_dic in card_json_read:
                 for key in card_dic:
-                    print(card_dic[key],end="\t"*4)
+                    print(card_dic[key], end="\t" * 4)
                 print()
             print()
 
@@ -60,40 +61,44 @@ class Card:
         """搜索名片"""
         print("-" * 50)
         print("搜索名片")
-        search_list=self.read_file()
-        #print(search_list)
-        #print(type(search_list))
-        if len(search_list)==0:
+        search_list = self.read_file()
+        # print(search_list)
+        # print(type(search_list))
+        if len(search_list) == 0:
             print("没有数据")
         else:
             name_str = input("请输入名字:")
             for dic_str in search_list:
-                for key in dic_str:
-                    if dic_str[key]==name_str:
-                        # print("找到了%s" % name_str)
-                        for title_name in ["姓名", "电话", "QQ", "邮箱"]:
-                            print(title_name, end="\t" * 4)
-                        print()
-                        for k in dic_str:
-                            print(dic_str[k], end="\t" * 4)
-                        print()
-                        print("找到了%s" % name_str)
+                if dic_str["name"] == name_str:
+                    # print("找到了%s" % name_str)
+                    for title_name in ["姓名", "电话", "QQ", "邮箱"]:
+                        print(title_name, end="\t" * 4)
+                    print()
+                    for k in dic_str:
+                        print(dic_str[k], end="\t" * 4)
+                    print()
+                    print("找到了%s" % name_str)
+                    # TODO 针对找到的字典,进行修改和删除操作
+                    self.deal(dic_str)
                     break
+            else:
+                print("没找到%s" % name_str)
+
+    def deal(self, card_dict):
+        """处理找到的字典,进行修改和删除"""
+        print(card_dict)
 
 
-
-
-# if __name__ == "__main__":
-#     card = Card()
-#     count = 0
-#     while True:
-#         card.create_card()
-#         count += 1
-#         if count == 2:
-#             break
-#     print(card.card_list)
-#     card.write_file()
-#     card.show_all_cards()
-    # print(card.card_list)
-    #card.search_card()
-
+        # if __name__ == "__main__":
+        #     card = Card()
+        #     count = 0
+        #     while True:
+        #         card.create_card()
+        #         count += 1
+        #         if count == 2:
+        #             break
+        #     print(card.card_list)
+        # card.write_file()
+        # card.show_all_cards()
+        # print(card.card_list)
+        # card.search_card()
