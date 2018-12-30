@@ -1,4 +1,1 @@
-{'name': 'gustcnn', 'qq': '1', 'phone': '2', 'email': '3'}
-{'name': 'cnn', 'qq': '1', 'phone': '2', 'email': '3'}
-{'name': 'cnn', 'qq': '1', 'phone': '2', 'email': '3'}
-{'name': 'ha', 'qq': '1', 'phone': '2', 'email': '3'}
+{"name": "allen", "qq": "123", "phone": "234", "email": "11@qq.com"}
