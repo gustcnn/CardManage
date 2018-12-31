@@ -78,27 +78,44 @@ class Card:
                         print(dic_str[k], end="\t" * 4)
                     print()
                     print("找到了%s" % name_str)
-                    # TODO 针对找到的字典,进行修改和删除操作
+                    #针对找到的字典,进行修改和删除操作
                     self.deal(dic_str)
                     break
             else:
                 print("没找到%s" % name_str)
 
-    def deal(self, card_dict):
+    def deal(self, find_dict):
         """处理找到的字典,进行修改和删除"""
-        print(card_dict)
+        print(find_dict)
+        print("1.修改/")
+        print("2.删除/")
+        print("0.返回上级菜单/")
+        deal=input("请输入需要对名片进行的操作:")
+        # for action in ["1","2","3"]:
+        if deal=="1":
+            #pass
+            print(1)
+        elif deal=="2":
+            #pass
+            #print(2)
+            #find_dict.clear()
+            card_list=self.read_file()
 
-
-        # if __name__ == "__main__":
-        #     card = Card()
-        #     count = 0
-        #     while True:
-        #         card.create_card()
-        #         count += 1
-        #         if count == 2:
-        #             break
-        #     print(card.card_list)
-        # card.write_file()
-        # card.show_all_cards()
-        # print(card.card_list)
-        # card.search_card()
+        elif deal=="0":
+            #pass
+            print(0)
+        else:
+            print("您输入错误")
+if __name__ == "__main__":
+    card = Card()
+    # count = 0
+    # while True:
+    #     card.create_card()
+    #     count += 1
+    #     if count == 2:
+    #         break
+    #print(card.card_list)
+# card.write_file()
+# card.show_all_cards()
+# print(card.card_list)
+    card.search_card()

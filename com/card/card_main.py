@@ -1,8 +1,8 @@
 # --*--coding:utf-8
 # Author:cnn
 import sys
-#from com.card.card_tools import Card
-from com.card.card_tool import Card
+from com.card.card_tools import Card
+#from com.card.card_tool import Card
 
 
 class CardMain:
@@ -23,6 +23,10 @@ class CardMain:
 
     # TODO(cnn) 选择功能菜单
     def select_menu(self):
+        """
+        选择菜单
+        :return:
+        """
         card=Card()#创建名片对象
         while True:
             action_str = input("请选择您希望执行的操作:")
